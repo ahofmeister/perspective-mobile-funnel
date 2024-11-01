@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import FunnelPreview from "@/features/funnel/funnel-preview";
+import FunnelPreview from "@/features/funnel/components/funnel-preview";
 
 
 export default function Home() {

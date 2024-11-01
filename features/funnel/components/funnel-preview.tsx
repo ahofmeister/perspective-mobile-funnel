@@ -1,7 +1,7 @@
 "use client";
 import React, {useState} from 'react';
-import FunnelUpload from "@/features/funnel/funnel-upload";
-import FunnelNavigation from "@/features/funnel/funnel-navigation";
+import FunnelUpload from "@/features/funnel/components/funnel-upload";
+import FunnelPagination from "@/features/funnel/components/funnel-pagination";
 
 const FunnelPreview = () => {
 
@@ -31,7 +31,7 @@ const FunnelPreview = () => {
 
 
             {funnel && funnel?.pages.length > 0 &&
-                <FunnelNavigation setCurrentPageIndex={setCurrentPageIndex} currentPageIndex={currentPageIndex}
+                <FunnelPagination setCurrentPageIndex={setCurrentPageIndex} currentPageIndex={currentPageIndex}
                                   totalPages={funnel.pages.length}/>
             }
 

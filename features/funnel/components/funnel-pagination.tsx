@@ -1,9 +1,9 @@
 "use client"
 import {ChevronLeft, ChevronRight} from "lucide-react";
 import React from "react";
-import PaginationButton from "@/features/funnel/pagination-button";
+import FunnelPaginationButton from "@/features/funnel/components/funnel-pagination-button";
 
-const FunnelNavigation = (props: {
+const FunnelPagination = (props: {
     currentPageIndex: number,
     setCurrentPageIndex: (index: number) => void,
     totalPages: number
@@ -17,29 +17,29 @@ const FunnelNavigation = (props: {
     return (
         <div className="flex justify-center m-4">
             <button className={"cursor-pointer"}
-                onClick={() => setCurrentPageIndex(Math.max(0, currentPageIndex - 1))}
-                disabled={currentPageIndex === 0}
+                    onClick={() => setCurrentPageIndex(Math.max(0, currentPageIndex - 1))}
+                    disabled={currentPageIndex === 0}
             >
                 <ChevronLeft/>
             </button>
 
             <div className="flex items-center">
-                <PaginationButton
+                <FunnelPaginationButton
                     index={0}
                     onClick={() => setCurrentPageIndex(0)}
                     currentPageIndex={currentPageIndex}
                 />
 
                 {totalPages > 2 &&
-                <PaginationButton
-                    index={middleIndex}
-                    onClick={() => setCurrentPageIndex(middleIndex)}
-                    currentPageIndex={currentPageIndex}
-                />
+                    <FunnelPaginationButton
+                        index={middleIndex}
+                        onClick={() => setCurrentPageIndex(middleIndex)}
+                        currentPageIndex={currentPageIndex}
+                    />
                 }
 
                 {totalPages > 1 && (
-                    <PaginationButton
+                    <FunnelPaginationButton
                         index={totalPages - 1}
                         onClick={() => setCurrentPageIndex(totalPages - 1)}
                         currentPageIndex={currentPageIndex}
@@ -57,4 +57,4 @@ const FunnelNavigation = (props: {
     );
 };
 
-export default FunnelNavigation;
+export default FunnelPagination;
