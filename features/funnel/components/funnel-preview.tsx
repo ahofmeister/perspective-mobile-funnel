@@ -19,12 +19,12 @@ const FunnelPreview = () => {
             {funnel &&
                 <>
                     <div className={"text-xl my-2"}>{funnel?.name}</div>
-                    <div className="w-[375px] h-[600px] overflow-y-auto p-4 justify-center"
+                    <div className="w-[375px] h-[600px] overflow-y-auto p-4 justify-center border border-gray-200 rounded"
                          style={{backgroundColor: funnel.bgColor}}>
 
                         <div className="flex justify-center mb-4">
                         </div>
-                        {funnel && funnel.pages[currentPageIndex].blocks?.map(renderBlock)}
+                            {funnel && funnel.pages[currentPageIndex].blocks?.map(renderBlock)}
                     </div>
                 </>
             }
