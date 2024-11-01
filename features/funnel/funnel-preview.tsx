@@ -2,10 +2,8 @@
 import React, {useState} from 'react';
 import FunnelUpload from "@/features/funnel/funnel-upload";
 import FunnelNavigation from "@/features/funnel/funnel-navigation";
-import Image from "next/image";
 
 const FunnelPreview = () => {
-
 
     const [funnel, setFunnel] = useState<Funnel | null>()
     const [currentPageIndex, setCurrentPageIndex] = useState(0)
@@ -18,13 +16,19 @@ const FunnelPreview = () => {
                     setCurrentPageIndex(0)
                 }}/>
             </div>
-            {funnel && <div className="w-[375px] h-[600px] overflow-y-auto p-4 justify-center"
-                            style={{backgroundColor: funnel.bgColor}}>
-                <div className="flex justify-center mb-4">
-                </div>
-                {funnel.pages[currentPageIndex].blocks?.map(renderBlock)}
-            </div>
+            {funnel &&
+                <>
+                    <div className={"text-xl my-2"}>{funnel?.name}</div>
+                    <div className="w-[375px] h-[600px] overflow-y-auto p-4 justify-center"
+                         style={{backgroundColor: funnel.bgColor}}>
+
+                        <div className="flex justify-center mb-4">
+                        </div>
+                        {funnel && funnel.pages[currentPageIndex].blocks?.map(renderBlock)}
+                    </div>
+                </>
             }
+
 
             {funnel && funnel?.pages.length > 0 &&
                 <FunnelNavigation setCurrentPageIndex={setCurrentPageIndex} currentPageIndex={currentPageIndex}
@@ -51,7 +55,7 @@ const renderBlock = (block: FunnelBlock) => {
             )
         case 'image':
             return (
-                <Image
+                <img
                     key={block.id}
                     src={block.src || ''}
                     alt={block.alt || ''}
@@ -65,7 +69,7 @@ const renderBlock = (block: FunnelBlock) => {
                 <ul key={block.id} className="mb-4">
                     {block.items?.map((item) => (
                         <li key={item.id} className="flex items-center mb-4">
-                            <Image src={item?.src} alt="" width={24} height={24} className="mr-3"/>
+                            <img src={item?.src} alt="" width={24} height={24} className="mr-3"/>
                             <div>
                                 <h3 className="font-semibold text-black">{item.title}</h3>
                                 <p className="text-sm text-gray-600">{item.description}</p>

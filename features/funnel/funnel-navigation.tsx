@@ -16,7 +16,7 @@ const FunnelNavigation = (props: {
 
     return (
         <div className="flex justify-center m-4">
-            <button
+            <button className={"cursor-pointer"}
                 onClick={() => setCurrentPageIndex(Math.max(0, currentPageIndex - 1))}
                 disabled={currentPageIndex === 0}
             >
